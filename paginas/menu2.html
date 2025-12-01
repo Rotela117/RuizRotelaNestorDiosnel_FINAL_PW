@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Vertical Mejorado</title>
+
+<style>
+/* ----------------------------- */
+/* HEADER MENU 2 — VERTICAL PASTEL */
+/* ----------------------------- */
+
+.header-menu2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 240px;
+    background-color: #6c5ce7;       /* morado principal */
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.25);
+    overflow-y: auto;
+    transition: width 0.3s;
+    z-index: 100;
+}
+
+/* Logo */
+.logo-menu2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+/* NAV */
+.nav-menu2 ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-menu2 ul li {
+    width: 100%;
+    position: relative;
+}
+
+.nav-menu2 ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.nav-menu2 ul li a:hover {
+    background-color: #5a4ad0;   /* morado más oscuro al pasar */
+}
+
+/* SUBMENÚS */
+.submenu-menu2 ul {
+    display: none;
+    flex-direction: column;
+    background-color: #5a4ad0;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+.submenu-menu2.open-menu2 > ul {
+    display: flex;
+}
+
+.submenu-menu2 ul li a {
+    padding-left: 35px;
+    font-size: 0.95em;
+}
+
+/* Flecha */
+.submenu-arrow-menu2 {
+    font-size: 0.8em;
+    transition: transform 0.3s;
+}
+
+.submenu-menu2.open-menu2 > a .submenu-arrow-menu2 {
+    transform: rotate(90deg);
+}
+
+/* CONTENIDO */
+.contenido-menu2 {
+    margin-left: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.contenido-menu2 p {
+    font-size: 1.2em;
+    color: #1e1e1e;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .header-menu2 {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 10px 0;
+    }
+
+    .nav-menu2 ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu2 ul li a {
+        padding: 10px 15px;
+    }
+
+    .submenu-menu2 ul li a {
+        padding-left: 20px;
+    }
+
+    .contenido-menu2 {
+        margin-left: 0;
+        margin-top: 20px;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="header-menu2">
+    <div class="logo-menu2">Mi Proyecto</div>
+
+    <nav class="nav-menu2">
+        <ul>
+            <li><a href="../index.html">🏠 Inicio</a></li>
+
+            <li class="submenu-menu2">
+                <a>🏦 Banco <span class="submenu-arrow-menu2">▶</span></a>
+                <ul>
+                    <li><a href="../paginas/banco_tabla.html">Tabla</a></li>
+                    <li><a href="../paginas/banco_miembros.html">Miembros</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../paginas/galeria.html">🖼️ Galería</a></li>
+            <li><a href="../paginas/operaciones.html">➗ Operaciones</a></li>
+
+            <li class="submenu-menu2">
+                <a>📝 Formularios <span class="submenu-arrow-menu2">▶</span></a>
+                <ul>
+                    <li><a href="../paginas/matriculacion.html">Matriculación</a></li>
+                    <li><a href="../paginas/prueba.html">Prueba</a></li>
+                </ul>
+            </li>
+
+            <li class="submenu-menu2">
+                <a>🎮 Multimedia <span class="submenu-arrow-menu2">▶</span></a>
+                <ul>
+                    <li><a href="../paginas/multimedia1.html">Mapa</a></li>
+                    <li><a href="../paginas/multimedia2.html">YouTube</a></li>
+                    <li><a href="../paginas/multimedia3.html">Videos & Audios</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../paginas/productos.html">🛒 Productos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="contenido-menu2">
+    <p>
+        Menú Vertical: Este tipo de menú organiza los enlaces en una barra lateral,
+        manteniendo el contenido principal centrado. Ideal para sitios con secciones amplias.
+    </p>
+</main>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <section class="accesos-flotante">
+        <input type="checkbox" id="toggle-accesos" hidden>
+        <label for="toggle-accesos" class="btn-toggle">⚡</label>
+        <div class="tarjeta-accesos">
+            <h2>Accesos rápidos</h2>
+            <div class="botones-rapidos">
+                <a href="../index.html" class="btn-rapido">Inicio</a>
+                <a href="../paginas/banco_tabla.html" class="btn-rapido">Banco - Tabla</a>
+                <a href="../paginas/banco_miembros.html" class="btn-rapido">Banco - Miembros</a>
+                <a href="../paginas/galeria.html" class="btn-rapido">Galería</a>
+                <a href="../paginas/operaciones.html" class="btn-rapido">Operaciones</a>
+                <a href="../paginas/clima.html" class="btn-rapido">Clima</a>
+                <a href="../paginas/paises.html" class="btn-rapido">Países</a>
+                <a href="../paginas/pokemon.html" class="btn-rapido">Pokémon</a>
+                <a href="../paginas/rick_morty.html" class="btn-rapido">Rick & Morty</a>
+                <a href="../paginas/criptomonedas.html" class="btn-rapido">Criptomonedas</a>
+                <a href="../paginas/matriculacion.html" class="btn-rapido">Matriculación</a>
+                <a href="../paginas/prueba.html" class="btn-rapido">Prueba</a>
+                <a href="../paginas/redsocial.html" class="btn-rapido">Red Social</a>
+                <a href="../paginas/comentarios.html" class="btn-rapido">Comentarios</a>
+                <a href="../paginas/noticias.html" class="btn-rapido">Noticias</a>
+                <a href="../paginas/multimedia.html" class="btn-rapido">Multimedia 1</a>
+                <a href="../paginas/multimedia2.html" class="btn-rapido">Multimedia 2</a>
+                <a href="../paginas/multimedia3.html" class="btn-rapido">Multimedia 3</a>
+                <a href="../paginas/menu1.html" class="btn-rapido">Menu1</a>
+                <a href="../paginas/menu2.html" class="btn-rapido">Menu2</a>
+                <a href="../paginas/menu3.html" class="btn-rapido">Menu3</a>
+                <a href="../paginas/productos.html" class="btn-rapido">Productos</a>
+                <a href="../paginas/imagenes.html" class="btn-rapido">Imágenes</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+<script>
+    // Submenú acordeón
+    document.querySelectorAll('.submenu-menu2 > a').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const parent = btn.parentElement;
+            parent.classList.toggle('open-menu2');
+        });
+    });
+</script>
+<!-- FOOTER -->
+    <footer class="footer">
+        © 2025 – Nestor Diosnel Ruiz Rotela | Todos los derechos reservados.
+    </footer>
+</body>
+</html>

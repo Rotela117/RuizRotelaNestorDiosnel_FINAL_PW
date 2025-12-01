@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Social - Comentarios</title>
+<link rel="stylesheet" href="../css/estilos.css">
+<style>
+/* Comentarios */
+.coment {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.coment h4 {
+    color: #4b3fa3;
+    margin-bottom: 6px;
+}
+
+.coment p {
+    margin-bottom: 8px;
+}
+
+/* Like */
+.like-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.like-btn {
+    font-size: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.like-btn.liked {
+    color: #EF4444;
+    transform: scale(1.2);
+}
+
+.likes {
+    font-weight: bold;
+}
+
+/* Formulario de comentarios */
+#formComentario {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#formComentario input,
+#formComentario textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+}
+
+#formComentario textarea {
+    height: 80px;
+    resize: none;
+}
+
+#formComentario .btn {
+    background: #1E3A8A;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#formComentario .btn:hover {
+    background: #3B82F6;
+    transform: scale(1.05);
+}
+
+/* Título principal */
+.titulo-con-imagen {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.titulo-con-imagen img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-left: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER GLOBAL -->
+    <header class="header">
+        <div class="logo">Mi Proyecto</div>
+        <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="../index.html">Página Principal</a></li>
+
+                <li class="submenu">
+                    <a href="#">Banco</a>
+                    <ul>
+                        <li><a href="../paginas/banco_tabla.html">Tabla</a></li>
+                        <li><a href="../paginas/banco_miembros.html">Miembros</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="../paginas/galeria.html">Galería</a></li>
+                <li><a href="../paginas/operaciones.html">Operaciones</a></li>
+
+                <li class="submenu">
+                    <a href="#">Formularios</a>
+                    <ul>
+                        <li><a href="../paginas/matriculacion.html">Matriculación</a></li>
+                        <li><a href="../paginas/prueba.html">Prueba</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Consultas</a>
+                    <ul>
+                        <li><a href="../paginas/clima.html">Clima</a></li>
+                        <li><a href="../paginas/paises.html">Países</a></li>
+                        <li><a href="../paginas/pokemon.html">Pokémon</a></li>
+                        <li><a href="../paginas/rick_morty.html">Rick & Morty</a></li>
+                        <li><a href="../paginas/criptomonedas.html">Criptomonedas</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Tienda</a>
+                    <ul>
+                        <li><a href="../paginas/productos.html">Productos</a></li>
+                        <li><a href="../paginas/imagenes.html">Imágenes</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Multimedia</a>
+                    <ul>
+                        <li><a href="../paginas/multimedia1.html">Mapa</a></li>
+                        <li><a href="../paginas/multimedia2.html">YouTube</a></li>
+                        <li><a href="../paginas/multimedia3.html">Videos & Audios</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Red Social</a>
+                    <ul>
+                        <li><a href="../paginas/redsocial.html">Red Social</a></li>
+                        <li><a href="../paginas/comentario.html">Comentarios</a></li>
+                        <li><a href="../paginas/noticias.html">Noticias</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Menús</a>
+                    <ul>
+                        <li><a href="../paginas/menu1.html">Menu1</a></li>
+                        <li><a href="../paginas/menu2.html">Menu2</a></li>
+                        <li><a href="../paginas/menu3.html">Menu3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // Funcionalidad móvil del menú
+        const toggle = document.getElementById('mobile-toggle');
+        const menu = document.querySelector('.menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.menu .submenu > a').forEach(link => {
+            link.addEventListener('click', e => {
+                if (menu.classList.contains('show')) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                }
+            });
+        });
+    </script>
+
+
+
+<main class="contenido">
+    <div class="titulo-con-imagen">
+        <h1>Comentarios de la Comunidad</h1>
+        <img src="../statics/images/comentario.jpg" alt="Comentarios">
+    </div>
+
+    <div id="comentarios" class="comentarios-box">
+
+        <div class="coment" data-id="c1">
+            <h4>@sofi_r</h4>
+            <p>Buen diseño el del sitio. Va tomando forma.</p>
+            <div class="like-area">
+                <button class="like-btn">❤</button>
+                <span class="likes">5</span> Likes
+            </div>
+        </div>
+
+        <div class="coment" data-id="c2">
+            <h4>@tomas_dev</h4>
+            <p>¿Van a agregar perfiles personalizados?</p>
+            <div class="like-area">
+                <button class="like-btn">❤</button>
+                <span class="likes">3</span> Likes
+            </div>
+        </div>
+
+        <div class="coment" data-id="c3">
+            <h4>@luisa23</h4>
+            <p>Me gusta la sección de media, está simpática.</p>
+            <div class="like-area">
+                <button class="like-btn">❤</button>
+                <span class="likes">4</span> Likes
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- Formulario -->
+    <h3>Agregar comentario</h3>
+
+    <form id="formComentario">
+        <input type="text" id="usuario" placeholder="Tu usuario (ej: @nestor)" required>
+        <textarea id="texto" placeholder="Escribe tu comentario..." required></textarea>
+        <button type="submit" class="btn">Publicar</button>
+    </form>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formComentario");
+    const contenedor = document.getElementById("comentarios");
+    let nextId = 4;
+
+    function activarLike(comentario) {
+        const btn = comentario.querySelector(".like-btn");
+        const span = comentario.querySelector(".likes");
+        let liked = false;
+
+        btn.addEventListener("click", () => {
+            let n = parseInt(span.textContent);
+            if (!liked) {
+                n++;
+                liked = true;
+                btn.classList.add("liked");
+            } else {
+                n--;
+                liked = false;
+                btn.classList.remove("liked");
+            }
+            span.textContent = n;
+        });
+    }
+
+    document.querySelectorAll(".coment").forEach(c => activarLike(c));
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        const user = document.getElementById("usuario").value.trim();
+        const txt = document.getElementById("texto").value.trim();
+        if (!user || !txt) return;
+
+        const nuevo = document.createElement("div");
+        nuevo.classList.add("coment");
+        nuevo.dataset.id = "c" + nextId;
+        nextId++;
+        nuevo.innerHTML = `
+            <h4>${user}</h4>
+            <p>${txt}</p>
+            <div class="like-area">
+                <button class="like-btn">❤</button>
+                <span class="likes">0</span> Likes
+            </div>
+        `;
+        contenedor.prepend(nuevo);
+        activarLike(nuevo);
+        form.reset();
+    });
+});
+</script>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <section class="accesos-flotante">
+        <input type="checkbox" id="toggle-accesos" hidden>
+        <label for="toggle-accesos" class="btn-toggle">⚡</label>
+        <div class="tarjeta-accesos">
+            <h2>Accesos rápidos</h2>
+            <div class="botones-rapidos">
+                <a href="../index.html" class="btn-rapido">Inicio</a>
+                <a href="../paginas/banco_tabla.html" class="btn-rapido">Banco - Tabla</a>
+                <a href="../paginas/banco_miembros.html" class="btn-rapido">Banco - Miembros</a>
+                <a href="../paginas/galeria.html" class="btn-rapido">Galería</a>
+                <a href="../paginas/operaciones.html" class="btn-rapido">Operaciones</a>
+                <a href="../paginas/clima.html" class="btn-rapido">Clima</a>
+                <a href="../paginas/paises.html" class="btn-rapido">Países</a>
+                <a href="../paginas/pokemon.html" class="btn-rapido">Pokémon</a>
+                <a href="../paginas/rick_morty.html" class="btn-rapido">Rick & Morty</a>
+                <a href="../paginas/criptomonedas.html" class="btn-rapido">Criptomonedas</a>
+                <a href="../paginas/matriculacion.html" class="btn-rapido">Matriculación</a>
+                <a href="../paginas/prueba.html" class="btn-rapido">Prueba</a>
+                <a href="../paginas/redsocial.html" class="btn-rapido">Red Social</a>
+                <a href="../paginas/comentarios.html" class="btn-rapido">Comentarios</a>
+                <a href="../paginas/noticias.html" class="btn-rapido">Noticias</a>
+                <a href="../paginas/multimedia.html" class="btn-rapido">Multimedia 1</a>
+                <a href="../paginas/multimedia2.html" class="btn-rapido">Multimedia 2</a>
+                <a href="../paginas/multimedia3.html" class="btn-rapido">Multimedia 3</a>
+                <a href="../paginas/menu1.html" class="btn-rapido">Menu1</a>
+                <a href="../paginas/menu2.html" class="btn-rapido">Menu2</a>
+                <a href="../paginas/menu3.html" class="btn-rapido">Menu3</a>
+                <a href="../paginas/productos.html" class="btn-rapido">Productos</a>
+                <a href="../paginas/imagenes.html" class="btn-rapido">Imágenes</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+<!-- FOOTER GLOBAL -->
+<footer class="footer">
+    © 2025 – Nestor Diosnel Ruiz Rotela | Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

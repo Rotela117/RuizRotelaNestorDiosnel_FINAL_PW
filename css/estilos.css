@@ -1,0 +1,850 @@
+/* ----------------------------- */
+/* ESTILOS GENERALES */
+/* ----------------------------- */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f5ff; /* suave pastel */
+    color: #333333;
+    line-height: 1.6;
+}
+
+main {
+    flex: 1; /* Empuja el footer hacia abajo */
+}
+
+main.contenido {
+    background: #f8f5ff;
+    padding: 40px 20px;
+}
+
+
+/* ----------------------------- */
+/* HEADER Y MENÚ */
+/* ----------------------------- */
+
+.header {
+    background: #6c5ce7; /* Morado sólido */
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav .menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu a {
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    background: #fff;
+    color: #4b3fa3;
+}
+
+/* Submenús flotantes */
+.submenu ul {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #d0c9f0;
+    padding: 10px 0;
+    list-style: none;
+    width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: opacity 0.2s ease-in-out;
+    z-index: 20;
+}
+
+.submenu:hover ul {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.submenu ul li a {
+    display: block;
+    padding: 8px 12px;
+    color: #4b3fa3;
+    font-weight: 400;
+}
+
+.submenu ul li a:hover {
+    background: #f2f0ff;
+    color: #4b3fa3;
+}
+
+/* Versión móvil */
+.mobile-toggle {
+    display: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav .menu {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav .menu.active {
+        display: flex;
+    }
+
+    .submenu ul {
+        display: none !important;
+        position: relative !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        padding-left: 15px;
+    }
+
+    .submenu.active ul {
+        display: block !important;
+    }
+
+    .submenu > a::after {
+        content: " ▾";
+        float: right;
+    }
+}
+
+/* ----------------------------- */
+/* CONTENIDO GENERAL */
+/* ----------------------------- */
+
+.contenido {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Contenedor principal: formulario + grid */
+.contenedor-principal {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.bienvenida {
+    flex: 1;
+}
+
+.grid-responsiva {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
+    }
+
+    .grid-responsiva {
+        flex: unset;
+        grid-template-columns: 1fr;
+    }
+}
+
+.titulo-seccion {
+    margin-top: 40px;
+    color: #4b3fa3;
+}
+
+/* Tarjetas reutilizables */
+.tarjeta {
+    background: #ffffff;
+    border: 1px solid #e0dfff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0px 3px 10px rgba(140, 120, 230, 0.12);
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(140, 120, 230, 0.2);
+    background: #f0edff;
+}
+
+/* ----------------------------- */
+/* FOOTER */
+/* ----------------------------- */
+
+.footer {
+    width: 100%;
+    background: #6c5ce7;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #8c7ae6;
+}
+
+/* ----------------------------- */
+/* FORMULARIO DE USUARIO */
+/* ----------------------------- */
+
+#formulario-usuario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#formulario-usuario input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#formulario-usuario button {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background: #8c7ae6;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#formulario-usuario button:hover {
+    background: #6c5ce7;
+}
+
+
+/* ----------------------------- */
+/* ESTILO FORMULARIO COMPACTO PASTEL */
+/* ----------------------------- */
+
+.formulario {
+    background: #f4f0ff; /* pastel morado claro */
+    border: 1px solid #d8cfff; /* borde suave lila */
+    padding: 25px 20px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(140, 120, 230, 0.2); /* sombra sutil azul-morada */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario h2 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #6c5ce7; /* morado pastel */
+    text-align: center;
+}
+
+.formulario label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b3fa3; /* morado más oscuro */
+}
+
+.formulario input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d8cfff;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.formulario input:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 6px rgba(108, 92, 231, 0.3);
+}
+
+.formulario button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #8c7ae6; /* morado pastel */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.formulario button:hover {
+    background: #6c5ce7; /* morado más intenso */
+    transform: translateY(-2px);
+}
+
+
+/* ----------------------------- */
+/* ESTILO TABLAS PASTEL MODERNO */
+/* ----------------------------- */
+
+.tabla-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.table-excel {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f0ff; /* pastel morado claro */
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(140, 120, 230, 0.1);
+}
+
+.table-excel caption {
+    caption-side: top;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 0;
+    color: #6c5ce7;
+}
+
+.table-excel thead {
+    background-color: #8c7ae6; /* morado pastel */
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.table-excel th, .table-excel td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0dfff;
+}
+
+.table-excel tbody tr:nth-child(even) {
+    background-color: #f0edff; /* pastel más suave */
+}
+
+.table-excel tbody tr:hover {
+    background-color: #e0d8ff;
+    transform: translateX(2px);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.table-excel th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.table-excel th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.table-excel td:first-child {
+    border-left: 1px solid #e0dfff;
+}
+
+.table-excel td:last-child {
+    border-right: 1px solid #e0dfff;
+}
+
+
+
+/* Encabezados temáticos */
+.tematica-header {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1em;
+}
+
+/* Temáticas personalizadas (puedes añadir más) */
+.tematica-belica {
+    background-color: #b58ce6; /* morado medio pastel */
+    color: #fff;
+}
+
+.tematica-supervivencia {
+    background-color: #6fc5e8; /* azul pastel */
+    color: #fff;
+}
+
+/* Títulos de tabla */
+.table-excel caption {
+    caption-side: top;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #6c5ce7;
+}
+
+/* Imágenes dentro de la tabla */
+.table-excel img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Responsive: scroll horizontal en pantallas pequeñas */
+@media (max-width: 768px) {
+    .table-excel {
+        font-size: 13px;
+    }
+}
+
+
+/* CONTENEDOR DEL CARRUSEL */
+.miembros-carrusel {
+    display: flex;
+    flex-wrap: wrap;         /* Permite que los miembros bajen de línea en móviles */
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;      /* Limita ancho máximo */
+    margin: 0 auto;          /* Centra el contenido */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* TARJETA INDIVIDUAL DE MIEMBRO */
+.member-card {
+    flex: 1 1 180px;         /* Crece, se reduce, ancho mínimo 180px */
+    max-width: 220px;        /* Limita el ancho de cada tarjeta */
+    background: #f4f0ff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(140,120,230,0.2);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* IMAGEN DEL MIEMBRO */
+.member-card img {
+    width: 100%;            /* Siempre ajusta al ancho del contenedor */
+    height: auto;           /* Mantiene proporción */
+    border-radius: 50%;     /* Opcional: hacer circular */
+    object-fit: cover;      /* Evita distorsión */
+}
+
+/* NOMBRES Y CARGO */
+.member-card h4 {
+    margin: 10px 0 5px;
+    color: #6c5ce7;
+}
+
+.member-card p {
+    margin: 0;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* RESPONSIVE MÓVIL */
+@media (max-width: 768px) {
+    .miembros-carrusel {
+        flex-direction: column;
+        align-items: center;
+    }
+    .member-card {
+        max-width: 90%;      /* Ocupa casi todo el ancho en móviles */
+    }
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    justify-items: center;
+    padding: 20px 0;
+}
+.cuadro {
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.cuadro img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+.cuadro:hover img {
+    transform: scale(1.05);
+}
+.cuadro:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+
+/* ----- FORMULARIO DE MATRICULACIÓN ----- */
+
+.formulario-matricula {
+    background: #f0eaff; /* lila pastel */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(90, 60, 160, 0.2);
+    border: 1px solid rgba(120, 90, 200, 0.25);
+    animation: fadeIn 0.7s ease-out;
+}
+
+.formulario-matricula h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #53348f;
+    font-size: 1.8em;
+}
+
+.campo {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #4b2e80;
+}
+
+.campo input,
+.campo select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #c5b7ef;
+    background: #f9f7ff;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: #a88bec;
+    box-shadow: 0 0 8px rgba(150, 120, 230, 0.4);
+}
+
+.btn-enviar {
+    background: #7b5be6;
+    color: white;
+    padding: 12px 18px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background: #6b4bd6;
+    transform: translateY(-2px);
+}
+
+#resultado {
+    margin-top: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #3c2a68;
+}
+
+/* suave entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.contenido-menu1 {
+    width: 90%;
+    max-width: 1200px;
+    margin: 120px auto 60px; /* separa del header y footer */
+    padding: 20px;
+}
+
+.contenido-menu1 .descripcion-menu {
+    background: rgba(255,255,255,0.06);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    color: #decaff;
+}
+
+.contenido-menu1 .descripcion-menu h2 {
+    margin-bottom: 15px;
+}
+
+.contenido-menu1 .descripcion-menu p {
+    font-size: 1.1em;
+    color: #e7e7ff;
+}
+
+.header-menu3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: #f0f0f0;
+    padding: 10px 20px;
+}
+
+/* Botón hamburguesa */
+.mobile-toggle-menu3 {
+    order: 1;
+    margin-right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Logo */
+.logo-menu3 {
+    order: 2;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+/* Menú */
+.nav-menu3 {
+    order: 3;
+    flex-grow: 1;
+}
+
+.menu-menu3 {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.menu-menu3 li {
+    position: relative;
+}
+
+.menu-menu3 a {
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+}
+
+/* Submenú */
+.submenu-menu3 ul {
+    display: none;
+    position: absolute;
+    background: white;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+}
+
+.submenu-menu3:hover ul {
+    display: block;
+}
+
+.accesos-rapidos {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.botones-rapidos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ----------------------------- */
+/* ACCESOS RÁPIDOS FLOTANTES */
+/* ----------------------------- */
+
+.accesos-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    text-align: center;
+}
+
+/* Botón para mostrar/ocultar la tarjeta */
+.btn-toggle {
+    background: #8c7ae6;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-toggle:hover {
+    background: #6c5ce7;
+    transform: scale(1.1);
+}
+
+/* Tarjeta con botones de acceso */
+.tarjeta-accesos {
+    display: none;
+    margin-top: 10px;
+    background: #f4f0ff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    box-shadow: 0 4px 15px rgba(140, 120, 230, 0.25);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#toggle-accesos:checked + .btn-toggle + .tarjeta-accesos {
+    display: block;
+}
+
+/* Título de la tarjeta */
+.tarjeta-accesos h2 {
+    margin-top: 0;
+    color: #6c5ce7;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Contenedor de botones */
+.tarjeta-accesos .botones-rapidos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Botones individuales */
+.btn-rapido {
+    padding: 8px 12px;
+    background: #8c7ae6;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-rapido:hover {
+    background: #6c5ce7;
+    transform: translateY(-2px);
+}
+
+/* ----------------------------- */
+/* RESPONSIVE MÓVIL */
+/* ----------------------------- */
+@media (max-width: 768px) {
+    .tarjeta-accesos {
+        width: 90vw;      /* casi todo el ancho */
+        bottom: 70px;     /* arriba del botón flotante */
+        right: 5vw;       /* margen lateral */
+        padding: 15px;    /* menos padding para móviles */
+        font-size: 14px;
+    }
+
+    .btn-toggle {
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .btn-rapido {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+
+/* ===== HTML BASICO ===== */
+
+.htmlbasico-contenedor {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.htmlbasico-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-left: 4px solid #6c5ce7;
+}
+
+.htmlbasico-titulo {
+    margin-bottom: 10px;
+    color: #6c5ce7;
+}
+
+.htmlbasico-code {
+    background: #1e1e1e;
+    color: #e6e6e6;
+    padding: 15px;
+    border-radius: 8px;
+    overflow: auto;
+    font-family: "Consolas", monospace;
+    font-size: 14px;
+}
+
+.htmlbasico-lista {
+    list-style: square;
+    margin-left: 20px;
+}
+
+.htmlbasico-ejemplo {
+    padding: 15px;
+    background: #f3f9ff;
+    border-radius: 10px;
+}
+
+.htmlbasico-boton {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #6c5ce7;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 10px;
+}

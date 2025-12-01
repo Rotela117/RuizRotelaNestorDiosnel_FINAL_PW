@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Observador Digital - Noticias</title>
+<link rel="stylesheet" href="../css/estilos.css">
+<style>
+/* Noticias destacadas */
+.portada {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 30px auto;
+    align-items: center;
+}
+
+.portada-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.portada-texto h2 {
+    font-size: 26px;
+    color: #1E3A8A;
+    margin-bottom: 10px;
+}
+
+.portada-texto p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.noticias-box {
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+}
+
+.noticia.seria {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.noticia h3 {
+    color: #1E3A8A;
+    margin-bottom: 6px;
+}
+
+.noticia p {
+    margin-bottom: 8px;
+}
+
+.noticia small {
+    color: #6B7280;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Likes */
+.like-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.like-btn {
+    font-size: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.like-btn.liked {
+    color: #EF4444;
+    transform: scale(1.2);
+}
+
+.likes {
+    font-weight: bold;
+}
+
+/* Responsive portada */
+@media (max-width: 768px) {
+    .portada {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER GLOBAL -->
+    <header class="header">
+        <div class="logo">Mi Proyecto</div>
+        <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="../index.html">Página Principal</a></li>
+
+                <li class="submenu">
+                    <a href="#">Banco</a>
+                    <ul>
+                        <li><a href="../paginas/banco_tabla.html">Tabla</a></li>
+                        <li><a href="../paginas/banco_miembros.html">Miembros</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="../paginas/galeria.html">Galería</a></li>
+                <li><a href="../paginas/operaciones.html">Operaciones</a></li>
+
+                <li class="submenu">
+                    <a href="#">Formularios</a>
+                    <ul>
+                        <li><a href="../paginas/matriculacion.html">Matriculación</a></li>
+                        <li><a href="../paginas/prueba.html">Prueba</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Consultas</a>
+                    <ul>
+                        <li><a href="../paginas/clima.html">Clima</a></li>
+                        <li><a href="../paginas/paises.html">Países</a></li>
+                        <li><a href="../paginas/pokemon.html">Pokémon</a></li>
+                        <li><a href="../paginas/rick_morty.html">Rick & Morty</a></li>
+                        <li><a href="../paginas/criptomonedas.html">Criptomonedas</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Tienda</a>
+                    <ul>
+                        <li><a href="../paginas/productos.html">Productos</a></li>
+                        <li><a href="../paginas/imagenes.html">Imágenes</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Multimedia</a>
+                    <ul>
+                        <li><a href="../paginas/multimedia1.html">Mapa</a></li>
+                        <li><a href="../paginas/multimedia2.html">YouTube</a></li>
+                        <li><a href="../paginas/multimedia3.html">Videos & Audios</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Red Social</a>
+                    <ul>
+                        <li><a href="../paginas/redsocial.html">Red Social</a></li>
+                        <li><a href="../paginas/comentario.html">Comentarios</a></li>
+                        <li><a href="../paginas/noticias.html">Noticias</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Menús</a>
+                    <ul>
+                        <li><a href="../paginas/menu1.html">Menu1</a></li>
+                        <li><a href="../paginas/menu2.html">Menu2</a></li>
+                        <li><a href="../paginas/menu3.html">Menu3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // Funcionalidad móvil del menú
+        const toggle = document.getElementById('mobile-toggle');
+        const menu = document.querySelector('.menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.menu .submenu > a').forEach(link => {
+            link.addEventListener('click', e => {
+                if (menu.classList.contains('show')) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                }
+            });
+        });
+    </script>
+
+<main class="contenido">
+
+    <!-- PORTADA DESTACADA -->
+    <section class="portada">
+        <img src="https://preview.redd.it/cordyceps-infection-map-based-on-hbos-intro-not-exactly-v0-oybfzgixc3ka1.png?width=640&crop=smart&auto=webp&s=21f9cdb9eb99ea2a106886c66ca8372cbd8161ac" alt="Noticia Principal" class="portada-img">
+        <div class="portada-texto">
+            <h2>Epidemia Fúngica Desata Estado de Emergencia Nacional</h2>
+            <p>
+                Autoridades confirman la propagación acelerada del hongo mutado tipo “cordyceps”. 
+                Fuerzas especiales aseguran perímetros y se insta a la población a evitar desplazamientos innecesarios.
+            </p>
+            <div class="like-area">
+                <button class="like-btn" data-id="201">👍</button>
+                <span id="likes-201" class="likes">112</span> Likes
+            </div>
+        </div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <!-- NOTICIAS SECUNDARIAS -->
+    <div id="noticias" class="noticias-box">
+
+        <div class="noticia seria">
+            <h3>Brotes Detectados en Nuevas Regiones</h3>
+            <p>
+                Equipos de respuesta rápida han confirmado la presencia de infectados en varias zonas urbanas. 
+                Se recomienda a la población mantenerse informada y seguir las medidas de seguridad.
+            </p>
+            <small>Publicado hace 3 horas</small>
+            <div class="like-area">
+                <button class="like-btn" data-id="202">👍</button>
+                <span id="likes-202" class="likes">87</span> Likes
+            </div>
+        </div>
+
+        <div class="noticia seria">
+            <h3>Laboratorios Aceleran Pruebas del Prototipo de Antídoto</h3>
+            <p>
+                Expertos señalan progresos significativos en los estudios preliminares para contener la mutación fúngica. 
+                Se esperan resultados oficiales en los próximos días.
+            </p>
+            <small>Publicado ayer</small>
+            <div class="like-area">
+                <button class="like-btn" data-id="203">👍</button>
+                <span id="likes-203" class="likes">63</span> Likes
+            </div>
+        </div>
+
+        <div class="noticia seria">
+            <h3>Cierre Temporal de Fronteras: Medida de Prevención</h3>
+            <p>
+                Los gobiernos regionales acordaron el cierre temporal de fronteras para evitar la expansión del brote. 
+                Se evaluará la situación semanalmente.
+            </p>
+            <small>Publicado hace 2 días</small>
+            <div class="like-area">
+                <button class="like-btn" data-id="204">👍</button>
+                <span id="likes-204" class="likes">41</span> Likes
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+// Likes para noticias
+document.addEventListener("DOMContentLoaded", () => {
+    const botones = document.querySelectorAll(".like-btn");
+    const likedState = {};
+
+    botones.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const id = btn.dataset.id;
+            const contador = document.getElementById("likes-" + id);
+            let n = parseInt(contador.textContent);
+
+            if (!likedState[id]) {
+                likedState[id] = true;
+                n++;
+                btn.classList.add("liked");
+            } else {
+                likedState[id] = false;
+                n--;
+                btn.classList.remove("liked");
+            }
+            contador.textContent = n;
+        });
+    });
+});
+</script>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <section class="accesos-flotante">
+        <input type="checkbox" id="toggle-accesos" hidden>
+        <label for="toggle-accesos" class="btn-toggle">⚡</label>
+        <div class="tarjeta-accesos">
+            <h2>Accesos rápidos</h2>
+            <div class="botones-rapidos">
+                <a href="../index.html" class="btn-rapido">Inicio</a>
+                <a href="../paginas/banco_tabla.html" class="btn-rapido">Banco - Tabla</a>
+                <a href="../paginas/banco_miembros.html" class="btn-rapido">Banco - Miembros</a>
+                <a href="../paginas/galeria.html" class="btn-rapido">Galería</a>
+                <a href="../paginas/operaciones.html" class="btn-rapido">Operaciones</a>
+                <a href="../paginas/clima.html" class="btn-rapido">Clima</a>
+                <a href="../paginas/paises.html" class="btn-rapido">Países</a>
+                <a href="../paginas/pokemon.html" class="btn-rapido">Pokémon</a>
+                <a href="../paginas/rick_morty.html" class="btn-rapido">Rick & Morty</a>
+                <a href="../paginas/criptomonedas.html" class="btn-rapido">Criptomonedas</a>
+                <a href="../paginas/matriculacion.html" class="btn-rapido">Matriculación</a>
+                <a href="../paginas/prueba.html" class="btn-rapido">Prueba</a>
+                <a href="../paginas/redsocial.html" class="btn-rapido">Red Social</a>
+                <a href="../paginas/comentarios.html" class="btn-rapido">Comentarios</a>
+                <a href="../paginas/noticias.html" class="btn-rapido">Noticias</a>
+                <a href="../paginas/multimedia.html" class="btn-rapido">Multimedia 1</a>
+                <a href="../paginas/multimedia2.html" class="btn-rapido">Multimedia 2</a>
+                <a href="../paginas/multimedia3.html" class="btn-rapido">Multimedia 3</a>
+                <a href="../paginas/menu1.html" class="btn-rapido">Menu1</a>
+                <a href="../paginas/menu2.html" class="btn-rapido">Menu2</a>
+                <a href="../paginas/menu3.html" class="btn-rapido">Menu3</a>
+                <a href="../paginas/productos.html" class="btn-rapido">Productos</a>
+                <a href="../paginas/imagenes.html" class="btn-rapido">Imágenes</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+
+<!-- FOOTER GLOBAL -->
+<footer class="footer">
+    © 2025 – Nestor Diosnel Ruiz Rotela | Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

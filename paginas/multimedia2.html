@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multimedia 2 - YouTube</title>
+
+<link rel="stylesheet" href="../css/estilos.css">
+
+<style>
+/* Grid de tarjetas */
+.contenedor-videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Tarjetas individuales */
+.video-card {
+    background: #ffffff;
+    border: 1px solid #d8d2f5;
+    border-radius: 14px;
+    padding: 15px;
+    box-shadow: 0 4px 14px rgba(70, 50, 140, 0.12);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 18px rgba(70, 50, 140, 0.22);
+}
+
+/* Título de cada tarjeta */
+.video-card h3 {
+    margin-bottom: 12px;
+    color: #4b3fa3;
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+/* Título general con imagen */
+.titulo-con-imagen {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.titulo-con-imagen img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+/* Animación general */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER GLOBAL -->
+    <header class="header">
+        <div class="logo">Mi Proyecto</div>
+        <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="../index.html">Página Principal</a></li>
+
+                <li class="submenu">
+                    <a href="#">Banco</a>
+                    <ul>
+                        <li><a href="../paginas/banco_tabla.html">Tabla</a></li>
+                        <li><a href="../paginas/banco_miembros.html">Miembros</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="../paginas/galeria.html">Galería</a></li>
+                <li><a href="../paginas/operaciones.html">Operaciones</a></li>
+
+                <li class="submenu">
+                    <a href="#">Formularios</a>
+                    <ul>
+                        <li><a href="../paginas/matriculacion.html">Matriculación</a></li>
+                        <li><a href="../paginas/prueba.html">Prueba</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Consultas</a>
+                    <ul>
+                        <li><a href="../paginas/clima.html">Clima</a></li>
+                        <li><a href="../paginas/paises.html">Países</a></li>
+                        <li><a href="../paginas/pokemon.html">Pokémon</a></li>
+                        <li><a href="../paginas/rick_morty.html">Rick & Morty</a></li>
+                        <li><a href="../paginas/criptomonedas.html">Criptomonedas</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Tienda</a>
+                    <ul>
+                        <li><a href="../paginas/productos.html">Productos</a></li>
+                        <li><a href="../paginas/imagenes.html">Imágenes</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Multimedia</a>
+                    <ul>
+                        <li><a href="../paginas/multimedia1.html">Mapa</a></li>
+                        <li><a href="../paginas/multimedia2.html">YouTube</a></li>
+                        <li><a href="../paginas/multimedia3.html">Videos & Audios</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Red Social</a>
+                    <ul>
+                        <li><a href="../paginas/redsocial.html">Red Social</a></li>
+                        <li><a href="../paginas/comentario.html">Comentarios</a></li>
+                        <li><a href="../paginas/noticias.html">Noticias</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Menús</a>
+                    <ul>
+                        <li><a href="../paginas/menu1.html">Menu1</a></li>
+                        <li><a href="../paginas/menu2.html">Menu2</a></li>
+                        <li><a href="../paginas/menu3.html">Menu3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // Funcionalidad móvil del menú
+        const toggle = document.getElementById('mobile-toggle');
+        const menu = document.querySelector('.menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.menu .submenu > a').forEach(link => {
+            link.addEventListener('click', e => {
+                if (menu.classList.contains('show')) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                }
+            });
+        });
+    </script>
+
+<!-- CONTENIDO -->
+<main class="contenido">
+
+    <div class="titulo-con-imagen">
+        <h1>Videos de YouTube</h1>
+        <img src="../statics/images/video.png" alt="Icono Video">
+    </div>
+
+    <p>Una pequeña selección de videos entretenidos para explorar.</p>
+
+    <section class="contenedor-videos">
+
+        <!-- Video 1 -->
+        <div class="video-card">
+            <h3>Bohemian Rhapsody | Muppets</h3>
+            <iframe 
+                width="100%" height="260"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+            <h3>Otoño</h3>
+            <iframe 
+                width="100%" height="260"
+                src="https://www.youtube.com/embed/8gJ716dhStg"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+
+    </section>
+
+</main>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <section class="accesos-flotante">
+        <input type="checkbox" id="toggle-accesos" hidden>
+        <label for="toggle-accesos" class="btn-toggle">⚡</label>
+        <div class="tarjeta-accesos">
+            <h2>Accesos rápidos</h2>
+            <div class="botones-rapidos">
+                <a href="../index.html" class="btn-rapido">Inicio</a>
+                <a href="../paginas/banco_tabla.html" class="btn-rapido">Banco - Tabla</a>
+                <a href="../paginas/banco_miembros.html" class="btn-rapido">Banco - Miembros</a>
+                <a href="../paginas/galeria.html" class="btn-rapido">Galería</a>
+                <a href="../paginas/operaciones.html" class="btn-rapido">Operaciones</a>
+                <a href="../paginas/clima.html" class="btn-rapido">Clima</a>
+                <a href="../paginas/paises.html" class="btn-rapido">Países</a>
+                <a href="../paginas/pokemon.html" class="btn-rapido">Pokémon</a>
+                <a href="../paginas/rick_morty.html" class="btn-rapido">Rick & Morty</a>
+                <a href="../paginas/criptomonedas.html" class="btn-rapido">Criptomonedas</a>
+                <a href="../paginas/matriculacion.html" class="btn-rapido">Matriculación</a>
+                <a href="../paginas/prueba.html" class="btn-rapido">Prueba</a>
+                <a href="../paginas/redsocial.html" class="btn-rapido">Red Social</a>
+                <a href="../paginas/comentarios.html" class="btn-rapido">Comentarios</a>
+                <a href="../paginas/noticias.html" class="btn-rapido">Noticias</a>
+                <a href="../paginas/multimedia.html" class="btn-rapido">Multimedia 1</a>
+                <a href="../paginas/multimedia2.html" class="btn-rapido">Multimedia 2</a>
+                <a href="../paginas/multimedia3.html" class="btn-rapido">Multimedia 3</a>
+                <a href="../paginas/menu1.html" class="btn-rapido">Menu1</a>
+                <a href="../paginas/menu2.html" class="btn-rapido">Menu2</a>
+                <a href="../paginas/menu3.html" class="btn-rapido">Menu3</a>
+                <a href="../paginas/productos.html" class="btn-rapido">Productos</a>
+                <a href="../paginas/imagenes.html" class="btn-rapido">Imágenes</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    © 2025 – Nestor Diosnel Ruiz Rotela | Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

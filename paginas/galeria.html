@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Animada</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">Mi Proyecto</div>
+        <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="../index.html">Página Principal</a></li>
+
+                <li class="submenu">
+                    <a href="#">Banco</a>
+                    <ul>
+                        <li><a href="../paginas/banco_tabla.html">Tabla</a></li>
+                        <li><a href="../paginas/banco_miembros.html">Miembros</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="../paginas/galeria.html">Galería</a></li>
+                <li><a href="../paginas/operaciones.html">Operaciones</a></li>
+
+                <li class="submenu">
+                    <a href="#">Formularios</a>
+                    <ul>
+                        <li><a href="../paginas/matriculacion.html">Matriculación</a></li>
+                        <li><a href="../paginas/prueba.html">Prueba</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Consultas</a>
+                    <ul>
+                        <li><a href="../paginas/clima.html">Clima</a></li>
+                        <li><a href="../paginas/paises.html">Países</a></li>
+                        <li><a href="../paginas/pokemon.html">Pokémon</a></li>
+                        <li><a href="../paginas/rick_morty.html">Rick & Morty</a></li>
+                        <li><a href="../paginas/criptomonedas.html">Criptomonedas</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Tienda</a>
+                    <ul>
+                        <li><a href="../paginas/productos.html">Productos</a></li>
+                        <li><a href="../paginas/imagenes.html">Imágenes</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Multimedia</a>
+                    <ul>
+                        <li><a href="../paginas/multimedia1.html">Mapa</a></li>
+                        <li><a href="../paginas/multimedia2.html">YouTube</a></li>
+                        <li><a href="../paginas/multimedia3.html">Videos & Audios</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Red Social</a>
+                    <ul>
+                        <li><a href="../paginas/redsocial.html">Red Social</a></li>
+                        <li><a href="../paginas/comentario.html">Comentarios</a></li>
+                        <li><a href="../paginas/noticias.html">Noticias</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#">Menús</a>
+                    <ul>
+                        <li><a href="../paginas/menu1.html">Menu1</a></li>
+                        <li><a href="../paginas/menu2.html">Menu2</a></li>
+                        <li><a href="../paginas/menu3.html">Menu3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        // Funcionalidad móvil del menú
+        const toggle = document.getElementById('mobile-toggle');
+        const menu = document.querySelector('.menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.menu .submenu > a').forEach(link => {
+            link.addEventListener('click', e => {
+                if (menu.classList.contains('show')) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                }
+            });
+        });
+    </script>
+
+
+
+    <!-- GALERÍA -->
+    <header>
+        <h1>Galería Animada</h1>
+    </header>
+
+    <p id="mensajeEdad"></p>
+
+    <main>
+        <section class="galeria" style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin: 30px auto;
+            max-width: 95%;
+        ">
+
+            <div class="cuadro">
+                <img src="https://m.media-amazon.com/images/I/51buAJmt+0L._SY445_SX342_FMwebp_.jpg"
+                    data-alt="https://m.media-amazon.com/images/I/51Nxcrx0C2L._SX342_SY445_ML2_.jpg"
+                    alt="Halo The Fall of Reach"
+                    class="anim1 img-swap">
+            </div>
+
+            <div class="cuadro">
+                <img src="https://m.media-amazon.com/images/I/41kJOqrpkIL._SY445_SX342_FMwebp_.jpg"
+                    data-alt="https://m.media-amazon.com/images/I/41qmj2sV3DL._SY445_SX342_FMwebp_.jpg"
+                    alt="Halo First Strike"
+                    class="anim2 img-swap">
+            </div>
+
+            <div class="cuadro">
+                <img src="https://m.media-amazon.com/images/I/71OWBp4J36L._SY342_.jpg"
+                    data-alt="https://m.media-amazon.com/images/I/71+Ij5gjkgL._SY342_.jpg"
+                    alt="Halo Ghosts of Onyx"
+                    class="anim3 img-swap">
+            </div>
+
+            <div class="cuadro">
+                <img src="https://m.media-amazon.com/images/I/71un2hI4mcL._SY466_.jpg"
+                    data-alt="https://m.media-amazon.com/images/I/71wRWeSwtrL._SY342_.jpg"
+                    alt="Juegos del Hambre Libro 1"
+                    class="anim4 img-swap">
+            </div>
+
+            <div class="cuadro">
+                <img src="https://m.media-amazon.com/images/I/714gpnDxKvL._SY342_.jpg"
+                    data-alt="https://m.media-amazon.com/images/I/71C3IOi5tLL._SY342_.jpg"
+                    alt="Juegos del Hambre En Llamas"
+                    class="anim5 img-swap">
+            </div>
+
+        </section>
+    </main>
+
+    <style>
+    /* Animaciones suaves */
+    .cuadro img {
+        width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .cuadro img:hover {
+        transform: scale(1.07);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* Animaciones individuales si ya las tenías en tu CSS */
+    .anim1 { animation: fadeIn 0.6s ease-out; }
+    .anim2 { animation: fadeIn 0.8s ease-out; }
+    .anim3 { animation: fadeIn 1.0s ease-out; }
+    .anim4 { animation: fadeIn 1.2s ease-out; }
+    .anim5 { animation: fadeIn 1.4s ease-out; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    </style>
+
+    <script>
+    // Efecto cambio de imagen al pasar el mouse
+    document.querySelectorAll('.img-swap').forEach(img => {
+        const original = img.src;
+        const alt = img.dataset.alt;
+
+        img.addEventListener('mouseenter', () => {
+            img.src = alt;
+        });
+
+        img.addEventListener('mouseleave', () => {
+            img.src = original;
+        });
+    });
+    </script>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <section class="accesos-flotante">
+        <input type="checkbox" id="toggle-accesos" hidden>
+        <label for="toggle-accesos" class="btn-toggle">⚡</label>
+        <div class="tarjeta-accesos">
+            <h2>Accesos rápidos</h2>
+            <div class="botones-rapidos">
+                <a href="../index.html" class="btn-rapido">Inicio</a>
+                <a href="../paginas/banco_tabla.html" class="btn-rapido">Banco - Tabla</a>
+                <a href="../paginas/banco_miembros.html" class="btn-rapido">Banco - Miembros</a>
+                <a href="../paginas/galeria.html" class="btn-rapido">Galería</a>
+                <a href="../paginas/operaciones.html" class="btn-rapido">Operaciones</a>
+                <a href="../paginas/clima.html" class="btn-rapido">Clima</a>
+                <a href="../paginas/paises.html" class="btn-rapido">Países</a>
+                <a href="../paginas/pokemon.html" class="btn-rapido">Pokémon</a>
+                <a href="../paginas/rick_morty.html" class="btn-rapido">Rick & Morty</a>
+                <a href="../paginas/criptomonedas.html" class="btn-rapido">Criptomonedas</a>
+                <a href="../paginas/matriculacion.html" class="btn-rapido">Matriculación</a>
+                <a href="../paginas/prueba.html" class="btn-rapido">Prueba</a>
+                <a href="../paginas/redsocial.html" class="btn-rapido">Red Social</a>
+                <a href="../paginas/comentarios.html" class="btn-rapido">Comentarios</a>
+                <a href="../paginas/noticias.html" class="btn-rapido">Noticias</a>
+                <a href="../paginas/multimedia.html" class="btn-rapido">Multimedia 1</a>
+                <a href="../paginas/multimedia2.html" class="btn-rapido">Multimedia 2</a>
+                <a href="../paginas/multimedia3.html" class="btn-rapido">Multimedia 3</a>
+                <a href="../paginas/menu1.html" class="btn-rapido">Menu1</a>
+                <a href="../paginas/menu2.html" class="btn-rapido">Menu2</a>
+                <a href="../paginas/menu3.html" class="btn-rapido">Menu3</a>
+                <a href="../paginas/productos.html" class="btn-rapido">Productos</a>
+                <a href="../paginas/imagenes.html" class="btn-rapido">Imágenes</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        © 2025 – Nestor Diosnel Ruiz Rotela | Todos los derechos reservados.
+    </footer>
+
+    <script src="../js/galeria.js"></script>
+</body>
+</html>
